@@ -10,6 +10,9 @@
       let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
       scanner.addListener('scan', function (content) {
         console.log(content);
+        if (content.startsWith('https') || content.startsWith('http')) {
+          window.open(content, '_blank');
+        }
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
